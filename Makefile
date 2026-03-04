@@ -1,13 +1,13 @@
 TEMPLATE ?= typescript-node-container
 OUT ?=
 
-TEMPLATES := go-node-container typescript-node-container
+TEMPLATES := go-node-container typescript-node-container terraform-container
 
 .PHONY: help list deploy
 
 help:
 	@echo "Usage:"
-	@echo "  make deploy OUT=/path/to/project [TEMPLATE=typescript-node-container|go-node-container]"
+	@echo "  make deploy OUT=/path/to/project [TEMPLATE=typescript-node-container|go-node-container|terraform-container]"
 	@echo "  make list"
 
 list:
