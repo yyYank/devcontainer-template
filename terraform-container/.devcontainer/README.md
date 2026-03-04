@@ -37,5 +37,5 @@ make -f .devcontainer/Makefile rebuild
 リポジトリルートで実行します。
 
 ```bash
-make deploy TEMPLATE=terraform-container OUT=/path/to/your-project
+make deploy from=terraform-container out=/path/to/your-project
 ```

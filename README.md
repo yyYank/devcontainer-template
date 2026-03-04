@@ -12,13 +12,13 @@
 
 ```bash
 make list
-make deploy OUT=/Users/yy_yank/typescript-project
-make deploy TEMPLATE=go-node-container OUT=/Users/yy_yank/go-project
-make deploy TEMPLATE=terraform-container OUT=/Users/yy_yank/terraform-project
+make deploy out=/Users/yy_yank/typescript-project
+make deploy from=go-node-container out=/Users/yy_yank/go-project
+make deploy from=terraform-container out=/Users/yy_yank/terraform-project
 ```
 
 ## 補足
-- `TEMPLATE` のデフォルトは `typescript-node-container`
-- `OUT` は必須
+- `from` のデフォルトは `typescript-node-container`
+- `out` は必須
 - 各テンプレートの `.devcontainer/` 配下に個別 README があります
 - 各 devcontainer は再ビルド後に `docker` コマンドを利用できます

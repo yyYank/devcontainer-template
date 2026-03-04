@@ -37,5 +37,5 @@ make -f .devcontainer/Makefile rebuild
 リポジトリルートで実行します。
 
 ```bash
-make deploy TEMPLATE=typescript-node-container OUT=/path/to/your-project
+make deploy from=typescript-node-container out=/path/to/your-project
 ```

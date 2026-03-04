@@ -37,5 +37,5 @@ make -f .devcontainer/Makefile rebuild
 リポジトリルートで実行します。
 
 ```bash
-make deploy TEMPLATE=go-node-container OUT=/path/to/your-project
+make deploy from=go-node-container out=/path/to/your-project
 ```
