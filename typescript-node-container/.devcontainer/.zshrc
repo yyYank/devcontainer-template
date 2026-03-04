@@ -23,3 +23,49 @@ export LS_COLORS="${LS_COLORS}:di=1;38;5;33:ln=1;38;5;45:ex=1;38;5;46:*.tar=1;38
 alias ls='ls --color=auto -F'
 alias ll='ls -lah'
 alias la='ls -A'
+
+# Prompt: simple powerline-like style with project segment.
+setopt PROMPT_SUBST
+
+prompt_project_name() {
+  local root remote repo
+  root=$(git rev-parse --show-toplevel 2>/dev/null)
+  if [[ -n "$root" ]]; then
+    remote=$(git remote get-url origin 2>/dev/null)
+    if [[ -n "$remote" ]]; then
+      repo="${remote:t}"
+      repo="${repo%.git}"
+      if [[ -n "$repo" ]]; then
+        echo "$repo"
+        return
+      fi
+    fi
+    echo "${root:t}"
+  else
+    echo "${PWD:t}"
+  fi
+}
+
+prompt_git_branch() {
+  local branch
+  branch=$(git branch --show-current 2>/dev/null)
+  if [[ -n "$branch" ]]; then
+    echo "$branch"
+  fi
+}
+
+# Use a Powerline separator glyph if available in the terminal font.
+typeset -g POWERLINE_SEP=''
+if [[ "${TERM_PROGRAM:-}" == "Apple_Terminal" ]]; then
+  POWERLINE_SEP='>'
+fi
+
+prompt_branch_segment() {
+  local branch
+  branch=$(prompt_git_branch)
+  if [[ -n "$branch" ]]; then
+    echo "%K{magenta}%F{white} ${branch} %k%f%F{magenta}${POWERLINE_SEP}%f "
+  fi
+}
+
+PROMPT='%K{blue}%F{white} dev %k%f%F{blue}${POWERLINE_SEP}%f%K{cyan}%F{black} $(prompt_project_name) %k%f%F{cyan}${POWERLINE_SEP}%f $(prompt_branch_segment)%# '
