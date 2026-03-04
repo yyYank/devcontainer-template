@@ -6,7 +6,7 @@ services:
       - ..:/workspace
       - ${HOME}/.claude:/home/vscode/.claude
       - ${HOME}/.codex:/home/vscode/.codex
-      - ${HOME}/.config:/home/vscode/.config
+      - ${HOME}/.config/git:/home/vscode/.config/git:ro
       - ${HOME}/.gitconfig:/home/vscode/.gitconfig:ro
       - ${HOME}/.zshrc:/home/vscode/.zshrc.host:ro
       - ./.zshrc:/home/vscode/.zshrc:ro

@@ -6,6 +6,10 @@ if [[ "${DEVCONTAINER_SOURCE_HOST_ZSHRC:-0}" == "1" && -f "$HOME/.zshrc.host" ]]
   source "$HOME/.zshrc.host"
 fi
 
+if [[ -x "$HOME/.local/bin/mise" ]]; then
+  eval "$("$HOME/.local/bin/mise" activate zsh)"
+fi
+
 if [[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
   source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
