@@ -6,9 +6,15 @@ if [[ "${DEVCONTAINER_SOURCE_HOST_ZSHRC:-0}" == "1" && -f "$HOME/.zshrc.host" ]]
   source "$HOME/.zshrc.host"
 fi
 
+if [[ -f "/workspace/.devcontainer/mise.toml" ]]; then
+  export MISE_CONFIG_FILE="/workspace/.devcontainer/mise.toml"
+fi
+
 if [[ -x "$HOME/.local/bin/mise" ]]; then
   eval "$("$HOME/.local/bin/mise" activate zsh)"
 fi
+
+export PATH="$HOME/.npm-global/bin:$PATH"
 
 if [[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
   source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
