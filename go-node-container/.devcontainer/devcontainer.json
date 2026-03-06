@@ -7,5 +7,5 @@
     "ghcr.io/devcontainers/features/go:1": {},
     "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
   },
-  "postCreateCommand": "curl https://mise.run | sh && MISE_CONFIG_FILE=.devcontainer/mise.toml ~/.local/bin/mise install && MISE_CONFIG_FILE=.devcontainer/mise.toml ~/.local/bin/mise exec -- sh -lc 'npm config set prefix \"$HOME/.npm-global\" && npm install -g @anthropic-ai/claude-code @openai/codex' && sudo apt-get update && sudo apt-get install -y git-delta zsh-autosuggestions zsh-syntax-highlighting"
+  "postCreateCommand": "curl -fsSL https://mise.run | sh && echo 'eval \"$(~/.local/bin/mise activate bash)\"' >> ~/.bashrc && MISE_CONFIG_FILE=.devcontainer/mise.toml ~/.local/bin/mise install && MISE_CONFIG_FILE=.devcontainer/mise.toml ~/.local/bin/mise exec -- sh -lc 'npm config set prefix \"$HOME/.npm-global\" && npm install -g @anthropic-ai/claude-code @openai/codex' && sudo apt-get update && sudo apt-get install -y git-delta zsh-autosuggestions zsh-syntax-highlighting"
 }

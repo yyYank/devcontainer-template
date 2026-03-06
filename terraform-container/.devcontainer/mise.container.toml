@@ -1,5 +1,5 @@
 [tools]
 node = "22"
-terraform = "latest"
-tflint = "latest"
-trivy = "latest"
+terraform = "1.10"
+tflint = "0.54"
+trivy = "0.58"
