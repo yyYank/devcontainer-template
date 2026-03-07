@@ -8,7 +8,9 @@ services:
       - ${HOME}/.claude/skills:/home/vscode/.claude/skills:ro
       - ${HOME}/.claude/rules:/home/vscode/.claude/rules:ro
       - ${HOME}/.claude/CLAUDE.md:/home/vscode/.claude/CLAUDE.md:ro
-      - ${HOME}/.codex:/home/vscode/.codex:ro
+      - ${HOME}/.codex:/home/vscode/.codex
+      - ${HOME}/.codex/skills:/home/vscode/.codex/skills:ro
+      - ${HOME}/.codex/rules:/home/vscode/.codex/rules:ro
       - ${HOME}/.config/git:/home/vscode/.config/git:ro
       - ${HOME}/.gitconfig:/home/vscode/.gitconfig:ro
       - ${HOME}/.zshrc:/home/vscode/.zshrc.host:ro
