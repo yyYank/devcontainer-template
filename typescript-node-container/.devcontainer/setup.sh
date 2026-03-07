@@ -4,9 +4,6 @@ set -eu
 # mise のインストール
 curl -fsSL https://mise.run | sh
 
-# mise の bash 設定
-echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bashrc
-
 # ツールのインストール
 MISE_CONFIG_FILE=.devcontainer/mise.toml ~/.local/bin/mise install
 
