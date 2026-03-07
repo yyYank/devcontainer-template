@@ -9,5 +9,5 @@
     },
     "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
   },
-  "postCreateCommand": "npm install -g @anthropic-ai/claude-code @openai/codex && sudo apt-get update && sudo apt-get install -y git-delta zsh-autosuggestions zsh-syntax-highlighting"
+  "postCreateCommand": "sh .devcontainer/setup.sh"
 }
