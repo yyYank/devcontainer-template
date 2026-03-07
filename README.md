@@ -6,6 +6,7 @@
 - `go-node-container`: Go + Node.js 向け
 - `typescript-node-container`: TypeScript + Node.js 向け（`mise` で Node 管理）
 - `terraform-container`: Terraform 向け（`mise` で Terraform 管理）
+- `arch-container`: Arch Linux ベース + Node.js 向け（`mise` で Node 管理）
 
 ## 使い方
 テンプレートを任意のプロジェクトへコピーします。
@@ -15,6 +16,7 @@ make list
 make deploy out=/Users/yy_yank/typescript-project
 make deploy from=go-node-container out=/Users/yy_yank/go-project
 make deploy from=terraform-container out=/Users/yy_yank/terraform-project
+make deploy from=arch-container out=/Users/yy_yank/arch-project
 ```
 
 ## 補足

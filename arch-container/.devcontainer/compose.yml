@@ -1,0 +1,22 @@
+services:
+  dev:
+    image: archlinux:latest
+    command: sleep infinity
+    volumes:
+      - ..:/workspace
+      - ${HOME}/.claude:/home/vscode/.claude
+      - ${HOME}/.claude/skills:/home/vscode/.claude/skills:ro
+      - ${HOME}/.claude/rules:/home/vscode/.claude/rules:ro
+      - ${HOME}/.claude/CLAUDE.md:/home/vscode/.claude/CLAUDE.md:ro
+      - ${HOME}/.codex:/home/vscode/.codex
+      - ${HOME}/.codex/skills:/home/vscode/.codex/skills:ro
+      - ${HOME}/.codex/rules:/home/vscode/.codex/rules:ro
+      - ${HOME}/.config/gh:/home/vscode/.config/gh:ro
+      - ${HOME}/.config/git:/home/vscode/.config/git:ro
+      - ${HOME}/.gitconfig:/home/vscode/.gitconfig:ro
+      - ${HOME}/.zshrc:/home/vscode/.zshrc.host:ro
+      - ./.zshrc:/home/vscode/.zshrc:ro
+      - ./mise.container.toml:/workspace/.devcontainer/mise.toml:ro
+      - ${HOME}/.bashrc:/home/vscode/.bashrc:ro
+      - ${HOME}/.vimrc:/home/vscode/.vimrc:ro
+    working_dir: /workspace

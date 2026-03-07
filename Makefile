@@ -1,7 +1,7 @@
 from ?=
 out ?=
 
-TEMPLATES := go-node-container typescript-node-container terraform-container
+TEMPLATES := go-node-container typescript-node-container terraform-container arch-container
 DEPLOY_FROM := $(strip $(if $(from),$(from),typescript-node-container))
 DEPLOY_OUT := $(strip $(out))
 
@@ -9,7 +9,7 @@ DEPLOY_OUT := $(strip $(out))
 
 help:
 	@echo "Usage:"
-	@echo "  make deploy out=/path/to/project [from=typescript-node-container|go-node-container|terraform-container]"
+	@echo "  make deploy out=/path/to/project [from=typescript-node-container|go-node-container|terraform-container|arch-container]"
 	@echo "  make list"
 
 list:
