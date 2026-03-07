@@ -13,4 +13,4 @@ MISE_CONFIG_FILE=.devcontainer/mise.toml ~/.local/bin/mise exec -- sh -lc \
 
 # apt パッケージのインストール
 sudo apt-get update
-sudo apt-get install -y git-delta zsh-autosuggestions zsh-syntax-highlighting gh
+sudo apt-get install -y git-delta zsh-autosuggestions zsh-syntax-highlighting
