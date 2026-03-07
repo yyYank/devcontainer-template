@@ -19,4 +19,5 @@ services:
       - ./mise.container.toml:/workspace/.devcontainer/mise.toml:ro
       - ${HOME}/.bashrc:/home/vscode/.bashrc:ro
       - ${HOME}/.vimrc:/home/vscode/.vimrc:ro
+      - /var/run/docker.sock:/var/run/docker.sock
     working_dir: /workspace
