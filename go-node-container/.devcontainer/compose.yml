@@ -4,7 +4,10 @@ services:
     command: sleep infinity
     volumes:
       - ..:/workspace
-      - ${HOME}/.claude:/home/vscode/.claude:ro
+      - ${HOME}/.claude:/home/vscode/.claude
+      - ${HOME}/.claude/skills:/home/vscode/.claude/skills:ro
+      - ${HOME}/.claude/rules:/home/vscode/.claude/rules:ro
+      - ${HOME}/.claude/CLAUDE.md:/home/vscode/.claude/CLAUDE.md:ro
       - ${HOME}/.codex:/home/vscode/.codex:ro
       - ${HOME}/.config/git:/home/vscode/.config/git:ro
       - ${HOME}/.gitconfig:/home/vscode/.gitconfig:ro
