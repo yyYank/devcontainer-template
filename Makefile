@@ -5,6 +5,16 @@ TEMPLATES := go-node-container typescript-node-container terraform-container arc
 DEPLOY_FROM := $(strip $(if $(from),$(from),typescript-node-container))
 DEPLOY_OUT := $(strip $(out))
 
+ifeq ($(DEPLOY_FROM),go-node-container)
+DEPLOY_SRC := go-project/go-node-container
+else ifeq ($(DEPLOY_FROM),typescript-node-container)
+DEPLOY_SRC := ts-project/typescript-node-container
+else ifeq ($(DEPLOY_FROM),terraform-container)
+DEPLOY_SRC := terraform-project/terraform-container
+else
+DEPLOY_SRC := $(DEPLOY_FROM)
+endif
+
 .PHONY: help list deploy
 
 help:
@@ -18,7 +28,7 @@ list:
 
 deploy:
 	@test -n "$(DEPLOY_OUT)" || (echo "ERROR: out is required. e.g. make deploy out=/Users/you/project" && exit 1)
-	@test -d "$(DEPLOY_FROM)" || (echo "ERROR: from '$(DEPLOY_FROM)' not found" && exit 1)
+	@test -d "$(DEPLOY_SRC)" || (echo "ERROR: from '$(DEPLOY_FROM)' not found" && exit 1)
 	@mkdir -p "$(DEPLOY_OUT)"
-	@cp -a "$(DEPLOY_FROM)/." "$(DEPLOY_OUT)/"
-	@echo "Deployed '$(DEPLOY_FROM)' to $(DEPLOY_OUT)"
+	@cp -a "$(DEPLOY_SRC)/." "$(DEPLOY_OUT)/"
+	@echo "Deployed '$(DEPLOY_FROM)' from $(DEPLOY_SRC) to $(DEPLOY_OUT)"

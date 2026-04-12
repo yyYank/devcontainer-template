@@ -1,4 +1,4 @@
-# devcontainer templates
+# dev-template
 
 このリポジトリは、複数の devcontainer テンプレートを配備するためのテンプレート集です。
 
