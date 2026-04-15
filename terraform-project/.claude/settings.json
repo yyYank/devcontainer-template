@@ -6,7 +6,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/log_filter.sh pre"
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/log_filter.sh pre",
+            "timeout": 10
           }
         ]
       }
@@ -17,7 +18,20 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/log_filter.sh post"
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/log_filter.sh post",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/log_filter.sh failure",
+            "timeout": 10
           }
         ]
       }
