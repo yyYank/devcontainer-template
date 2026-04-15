@@ -11,7 +11,14 @@ tool_name="$(printf '%s' "$INPUT" | jq -r '.tool_name // ""')"
 COMMAND="$(printf '%s' "$INPUT" | jq -r '.tool_input.command // ""')"
 [ -n "$COMMAND" ] || exit 0
 
-TOOL_ERROR="$(printf '%s' "$INPUT" | jq -r '.error // ""')"
+TOOL_ERROR="$(printf '%s' "$INPUT" | jq -r '.error // .tool_response.stderr? // ""')"
+TOOL_SUCCESS="$(printf '%s' "$INPUT" | jq -r '
+  if (.tool_response | type) == "object" then
+    (.tool_response.success // (if (.tool_response.exitCode // .tool_response.exit_code // 0) == 0 then true else false end))
+  else
+    true
+  end
+')"
 RAW_RESPONSE="$(printf '%s' "$INPUT" | jq -r '
   if .tool_response? then
     [
@@ -221,6 +228,11 @@ summarize_json() {
 }
 
 post_check() {
+  if [ "$TOOL_SUCCESS" = "false" ] || [ -n "$TOOL_ERROR" ]; then
+    failure_check
+    return
+  fi
+
   summary=""
 
   if is_git_diff_command; then
@@ -255,7 +267,7 @@ failure_check() {
   fi
 
   [ -n "$summary" ] || summary="$(printf '[%s] Bash command failed: `%s`\n%s\n' "$PROJECT_PROFILE" "$COMMAND" "$TOOL_ERROR")"
-  emit_context "PostToolUseFailure" "$summary"
+  emit_context "PostToolUse" "$summary"
 }
 
 case "$MODE" in
